@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.imchat.chanttyai">
+
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
+    <!-- IM SDK required start -->
+    <!-- 允许程序振动，用于本地通知设置振动 -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 访问网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 获取运营商信息，用于获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 允许程序在手机屏幕关闭后后台进程仍然运行 -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <!-- 申请闹钟定时权限，SDK 心跳中使用，3.9.8及以后版本可以不添加 -->
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <!--通知栏-->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- IM SDK required end -->
+
+    <!--打电话-->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!--剪切板-->
+    <uses-permission android:name="android.permission.READ_CLIPBOARD_IN_BACKGROUND"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.READ_CLIPBOARD"/>
+
+    <application
+        android:name=".base.App"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ChanttyAi"
+        tools:targetApi="31">
+
+        <meta-data
+            android:name="design_width_in_dp"
+            android:value="420" />
+        <meta-data
+            android:name="design_height_in_dp"
+            android:value="960" />
+
+        <activity
+            android:name=".ui.activity.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ChanttyAi">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.activity.LoginActivity" />
+        <activity
+            android:name=".ui.activity.ChatActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".ui.activity.MainActivity" />
+        <activity android:name=".ui.activity.CreateAIActivity"/>
+        <activity android:name=".ui.activity.ChooseAvatarActivity" android:launchMode="singleTop"/>
+        <activity android:name=".ui.activity.UserInfoActivity" />
+        <activity android:name=".ui.activity.ChangeNameActivity" />
+        <activity android:name=".ui.activity.GroupManageActivity" />
+        <activity android:name=".ui.activity.ChangeGroupNameActivity" />
+
+        <!-- 声明 SDK 所需的 service 的核心功能-->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+
+</manifest>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.easemob.chattyai.chat.dao.ChatBotMapper">
+    <resultMap id="BaseResultMap" type="com.easemob.chattyai.bean.ChatBot">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="bot_name" property="botName" jdbcType="VARCHAR"/>
+        <result column="describe" property="describe" jdbcType="VARCHAR"/>
+        <result column="pic" property="pic" jdbcType="VARCHAR"/>
+        <result column="open" property="open" jdbcType="TINYINT"/>
+        <result column="ea_account" property="eaAccount" jdbcType="VARCHAR"/>
+        <result column="create_account" property="createAccount" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,bot_name,`describe`,pic,`open`,ea_account,create_account,create_time
+    </sql>
+
+    <sql id="Base_Query_Sql">
+        <where>
+            <if test="props.id != null and props.id!=''">
+                AND id = #{props.id}
+            </if>
+            <if test="props.open != null">
+                AND `open`=#{props.open}
+            </if>
+            <if test="props.createAccount != null and props.createAccount != ''">
+                AND create_account = #{props.createAccount}
+            </if>
+        </where>
+    </sql>
+    <delete id="deleteById">
+        delete from chat_bot where id = #{id}
+    </delete>
+
+    <select id="count" parameterType="java.util.Map" resultType="java.lang.Integer">
+        SELECT
+        COUNT(id)
+        FROM
+        chat_bot
+        <include refid="Base_Query_Sql"/>
+    </select>
+
+    <select id="listByPage" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        chat_bot
+        <include refid="Base_Query_Sql"/>
+        <if test="orderby != null and orderby != ''">
+            ORDER BY ${orderby}
+        </if>
+        <if test="pagesize > 0">
+            LIMIT #{first},#{pagesize}
+        </if>
+    </select>
+
+    <select id="getById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        chat_bot
+        WHERE
+        id = #{id}
+        LIMIT 1
+    </select>
+
+    <insert id="insert" parameterType="com.easemob.chattyai.bean.ChatBot">
+        INSERT INTO chat_bot
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="botName != null and botName != ''">
+            bot_name,
+        </if>
+        <if test="describe != null and describe != ''">
+            `describe`,
+        </if>
+        <if test="pic != null and pic != ''">
+            pic,
+        </if>
+        <if test="open != null">
+            `open`,
+        </if>
+        <if test="eaAccount != null and eaAccount != ''">
+            ea_account,
+        </if>
+        <if test="createAccount != null and createAccount != ''">
+            create_account,
+        </if>
+        <if test="createTime != null">
+            create_time,
+        </if>
+
+    </trim>
+        <trim prefix=" values (" suffix=")" suffixOverrides=",">
+            <if test="botName != null and botName != ''">
+                #{botName,jdbcType=VARCHAR},
+            </if>
+            <if test="describe != null and describe != ''">
+                #{describe,jdbcType=VARCHAR},
+            </if>
+            <if test="pic != null and pic != ''">
+                #{pic,jdbcType=VARCHAR},
+            </if>
+            <if test="open != null">
+                #{open,jdbcType=TINYINT},
+            </if>
+            <if test="eaAccount != null and eaAccount != ''">
+                #{eaAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="createAccount != null and createAccount != ''">
+                #{createAccount,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getByEsId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM
+        chat_bot
+        WHERE
+        ea_account = #{eaAccount}
+        LIMIT 1
+    </select>
+</mapper>

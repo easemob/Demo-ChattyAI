@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+    </declare-styleable>
+
+    <style name="NiceDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowSoftInputMode">adjustPan</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="DefaultAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/anim_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_dialog_out</item>
+    </style>
+
+    <style name="ProgressBarStyleLarge">
+        <item name="android:indeterminateDrawable">@drawable/loading</item>
+        <item name="android:width">36dp</item>
+        <item name="android:height">36dp</item>
+    </style>
+
+    <declare-styleable name="CombinedView">
+        <!-- 头像的背景色 -->
+        <attr name="combined_backgroundColor" format="color" />
+        <!-- 头像的形状，圆角方形和圆形 -->
+        <attr name="combined_shape" format="enum">
+            <enum name="round" value="1" />
+            <enum name="circle" value="2" />
+        </attr>
+        <!-- 圆角方形的圆角半径-->
+        <attr name="combined_roundRadius" format="dimension" />
+        <!-- 宫格分割线的颜色 -->
+        <attr name="combined_dividerColor" format="color" />
+        <!-- 宫格分割线的宽度 -->
+        <attr name="combined_dividerWidth" format="dimension" />
+        <!-- 宫格文本的颜色 -->
+        <attr name="combined_textColor" format="color" />
+        <!-- 只有一个宫格头像文字的大小，多个宫格时根据该值来计算 -->
+        <attr name="combined_textSize" format="dimension" />
+    </declare-styleable>
+
+</resources>

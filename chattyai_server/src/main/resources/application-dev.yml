@@ -1,0 +1,68 @@
+logging:
+  level:
+    com.easemob.im.http: debug
+server:
+  port: 80
+config:
+  ai: minimax
+easemob:
+  appkey: #环信appkey
+  clientId: #环信clientId
+  clientSecret: #环信clientSecret
+miniMax:
+  groupId: #minimax groupId
+  appkey: #minimax appkey
+  url: https://api.minimax.chat/v1/text/chatcompletion_pro?GroupId=
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    druid:
+      # 示例： url: jdbc:mysql://192.168.0.1:3306/chattyai?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      url: jdbc:mysql://数据库地址:数据库端口/chattyai?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+      username: 数据库用户名
+      password: 数据库密码
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  redis:
+    host: #redis地址
+    port: #redis端口
+    # 如果没有密码，请注释掉下面这行，而不是删掉密码里面的内容
+    password: #redis密码
+    # 连接超时时间（毫秒）
+    timeout: 30000
+    # 连接池中的最大空闲连接
+    max-idle: 8
+    # 连接池中的最小空闲连接
+    min-idle: 10
+    # 连接池最大连接数（使用负值表示没有限制）
+    max-active: 100
+    # 连接池最大阻塞等待时间（使用负值表示没有限制）
+    max-wait: -1
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:/mapper/*.xml
+  typeAliasesPackage: com.easemob.chattyai.**.bean.*

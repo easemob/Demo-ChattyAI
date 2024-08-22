@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/sl_home"
+        android:title="智能体" />
+    <item
+        android:id="@+id/action_group"
+        android:icon="@drawable/sl_group_chat"
+        android:title="群聊" />
+    <item
+        android:id="@+id/action_conversation"
+        android:icon="@drawable/sl_conversation"
+        android:title="会话" />
+    <item
+        android:id="@+id/action_mine"
+        android:icon="@drawable/sl_mine"
+        android:title="个人" />
+</menu>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/fl"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/per_bg_2">
+
+    <CheckBox
+        android:id="@+id/cb"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="20dp"
+        android:clickable="false"
+        android:background="@drawable/sl_bg_check_box"
+        android:button="@null" />
+
+</FrameLayout>

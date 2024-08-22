@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="10dp"
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="5dp"
+    android:layout_marginEnd="30dp"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:textColor="@color/white"
+        tools:text="121212"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <com.imchat.chanttyai.views.CircleImageView
+            android:id="@+id/iv_avatar"
+            tools:src="@drawable/avatar_1"
+            android:layout_width="28dp"
+            android:layout_height="28dp"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/sp_msg_left_male"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="16dp"
+            tools:text="1231312123123123123123"
+            android:textColor="#F9FAFA" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:textColor="#919BA1"
+        android:textSize="@dimen/chat_time"
+        android:layout_marginStart="38dp"
+        android:paddingHorizontal="5dp"
+        tools:text="11:11"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
